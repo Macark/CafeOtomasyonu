@@ -1,0 +1,40 @@
+﻿@model Cafe_Otomasyonu.Models.Entity.Personel_TBL
+@{
+    ViewBag.Title = "Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section id="main-content">
+    <section class="wrapper">
+      
+            @using (Html.BeginForm("Guncelle", "Personel", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Per_ID)
+                    @Html.TextBoxFor(m => m.Per_ID, new { @class = "form-control" })
+                    <br />
+
+                    @Html.LabelFor(m => m.Per_Ad)
+                    @Html.TextBoxFor(m => m.Per_Ad, new { @class = "form-control" })
+                    <br />
+
+                    @Html.LabelFor(m => m.Per_Soyad)
+                    @Html.TextBoxFor(m => m.Per_Soyad, new { @class = "form-control" })
+                    <br />
+
+                    @Html.LabelFor(m => m.Per_Telefon)
+                    @Html.TextBoxFor(m => m.Per_Telefon, new { @class = "form-control" })
+                    <br />
+                    @Html.LabelFor(m => m.Per_Bölüm)
+                    @Html.TextBoxFor(m => m.Per_Bölüm, new { @class = "form-control" })
+
+                </div>
+                <button class="btn btn-warning">Personel Güncelle</button>
+
+                <div>
+
+                </div>
+
+            }
+
+    </section>
+</section>

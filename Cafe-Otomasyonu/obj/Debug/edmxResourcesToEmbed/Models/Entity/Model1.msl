@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Cafe_OtomasyonuEntities2">
+    <EntitySetMapping Name="Kategoriler_TBL">
+      <EntityTypeMapping TypeName="Model.Kategoriler_TBL">
+        <MappingFragment StoreEntitySet="Kategoriler_TBL">
+          <ScalarProperty Name="Kategori_ID" ColumnName="Kategori_ID" />
+          <ScalarProperty Name="Kategori_Ad" ColumnName="Kategori_Ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login_TBL">
+      <EntityTypeMapping TypeName="Model.Login_TBL">
+        <MappingFragment StoreEntitySet="Login_TBL">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Masalar_TBL">
+      <EntityTypeMapping TypeName="Model.Masalar_TBL">
+        <MappingFragment StoreEntitySet="Masalar_TBL">
+          <ScalarProperty Name="Masa_id" ColumnName="Masa_id" />
+          <ScalarProperty Name="Masa_Durum" ColumnName="Masa_Durum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personel_TBL">
+      <EntityTypeMapping TypeName="Model.Personel_TBL">
+        <MappingFragment StoreEntitySet="Personel_TBL">
+          <ScalarProperty Name="Per_ID" ColumnName="Per_ID" />
+          <ScalarProperty Name="Per_Ad" ColumnName="Per_Ad" />
+          <ScalarProperty Name="Per_Soyad" ColumnName="Per_Soyad" />
+          <ScalarProperty Name="Per_Telefon" ColumnName="Per_Telefon" />
+          <ScalarProperty Name="Per_Bölüm" ColumnName="Per_Bölüm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Siparisler_TBL">
+      <EntityTypeMapping TypeName="Model.Siparisler_TBL">
+        <MappingFragment StoreEntitySet="Siparisler_TBL">
+          <ScalarProperty Name="Siparis_ID" ColumnName="Siparis_ID" />
+          <ScalarProperty Name="Siparis_Urun" ColumnName="Siparis_Urun" />
+          <ScalarProperty Name="Siparis_isim" ColumnName="Siparis_isim" />
+          <ScalarProperty Name="Siparis_Adet" ColumnName="Siparis_Adet" />
+          <ScalarProperty Name="Siparis_Zaman" ColumnName="Siparis_Zaman" />
+          <ScalarProperty Name="Siparis_Masa" ColumnName="Siparis_Masa" />
+          <ScalarProperty Name="Siparis_Durum" ColumnName="Siparis_Durum" />
+          <ScalarProperty Name="Siparis_Fiyat" ColumnName="Siparis_Fiyat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urunler_TBL">
+      <EntityTypeMapping TypeName="Model.Urunler_TBL">
+        <MappingFragment StoreEntitySet="Urunler_TBL">
+          <ScalarProperty Name="Urun_ID" ColumnName="Urun_ID" />
+          <ScalarProperty Name="Urun_Resim" ColumnName="Urun_Resim" />
+          <ScalarProperty Name="Urun_Adi" ColumnName="Urun_Adi" />
+          <ScalarProperty Name="Urun_Ayrinti" ColumnName="Urun_Ayrinti" />
+          <ScalarProperty Name="Urun_Kategori" ColumnName="Urun_Kategori" />
+          <ScalarProperty Name="Urun_Ucret" ColumnName="Urun_Ucret" />
+          <ScalarProperty Name="Urun_Stok" ColumnName="Urun_Stok" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

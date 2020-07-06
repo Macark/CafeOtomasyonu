@@ -1,0 +1,47 @@
+﻿@model Cafe_Otomasyonu.Models.Entity.Urunler_TBL
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+
+        @using (Html.BeginForm("Guncelle", "Urunler", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Urun_ID)
+                @Html.TextBoxFor(m => m.Urun_ID, new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(m => m.Urun_Adi)
+                @Html.TextBoxFor(m => m.Urun_Adi, new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(m => m.Urun_Ayrinti)
+                @Html.TextBoxFor(m => m.Urun_Ayrinti, new { @class = "form-control" })
+                <br />
+
+                @Html.LabelFor(m => m.Urun_Kategori)
+                @Html.TextBoxFor(m => m.Urun_Kategori, new { @class = "form-control" })
+                <br />
+                @Html.LabelFor(m => m.Urun_Ucret)
+                @Html.TextBoxFor(m => m.Urun_Ucret, new { @class = "form-control" })
+                <br />
+                @Html.LabelFor(m => m.Urun_Stok)
+                @Html.TextBoxFor(m => m.Urun_Stok, new { @class = "form-control" })
+
+            </div>
+            <button class="btn btn-warning">Ürün Güncelle</button>
+
+            <div>
+
+            </div>
+
+        }
+
+
+
+
+    </section>
+</section>

@@ -1,0 +1,77 @@
+﻿@model Cafe_Otomasyonu.Models.Entity.Siparisler_TBL
+
+@{
+
+
+    ViewBag.Title = "Siparişler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Sipariş Ver</button>
+
+
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h2 class="modal-title">Satış Yapma Ekranı</h2>
+                    </div>
+                    <form method="post" action="/Siparişler/YeniSatis">
+                        <div class="modal-body">
+                          <label>
+                                Ürün Adı
+                            </label>
+                            @Html.TextBoxFor(m => m.Siparis_Urun, new { @class = "form-control" })
+                            @*<div class="form-group">
+                                @Html.LabelFor(model => model.Siparis_Urun, "Ürün Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("Siparis_ID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Siparis_Urun, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
+                            <br />
+                            <label>
+                                Ürün Adet
+                            </label>
+                            <br />
+                            @Html.TextBoxFor(m => m.Siparis_Adet, new { @class = "form-control" })
+                            <br />
+                            <label>
+                                Sipariş Zamanı
+                            </label>
+                            @Html.TextBoxFor(m => m.Siparis_Zaman, new { @class = "form-control" })
+                            <br />
+                            <label>
+                                Masa No
+                            </label>
+                            <br />
+                            @Html.TextBoxFor(m => m.Siparis_Masa, new { @class = "form-control" })
+                            <br />
+                            <label>
+                                Sipariş Durum
+                            </label>
+                            @Html.TextBoxFor(m => m.Siparis_Durum, new { @class = "form-control" })
+                            <br />
+                            <label>
+                                Fiyat
+                            </label>
+                            <br />
+                            @Html.TextBoxFor(m => m.Siparis_Fiyat, new { @class = "form-control" })
+                            <br />
+                            <button type="submit" class="btn btn-info">Siparişi Kaydet</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Sipariş İptal</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+</section>

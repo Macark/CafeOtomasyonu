@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Kategoriler_TBL">
+    <Key>
+      <PropertyRef Name="Kategori_ID" />
+    </Key>
+    <Property Name="Kategori_ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kategori_Ad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Login_TBL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Masalar_TBL">
+    <Key>
+      <PropertyRef Name="Masa_id" />
+    </Key>
+    <Property Name="Masa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Masa_Durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="Personel_TBL">
+    <Key>
+      <PropertyRef Name="Per_ID" />
+    </Key>
+    <Property Name="Per_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Per_Ad" Type="varchar" MaxLength="50" />
+    <Property Name="Per_Soyad" Type="varchar" MaxLength="50" />
+    <Property Name="Per_Telefon" Type="varchar" MaxLength="12" />
+    <Property Name="Per_Bölüm" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Siparisler_TBL">
+    <Key>
+      <PropertyRef Name="Siparis_ID" />
+    </Key>
+    <Property Name="Siparis_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Siparis_Urun" Type="int" />
+    <Property Name="Siparis_isim" Type="nvarchar" MaxLength="50" />
+    <Property Name="Siparis_Adet" Type="nvarchar" MaxLength="50" />
+    <Property Name="Siparis_Zaman" Type="datetime" />
+    <Property Name="Siparis_Masa" Type="int" />
+    <Property Name="Siparis_Durum" Type="nvarchar" MaxLength="50" />
+    <Property Name="Siparis_Fiyat" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Urunler_TBL">
+    <Key>
+      <PropertyRef Name="Urun_ID" />
+    </Key>
+    <Property Name="Urun_ID" Type="int" Nullable="false" />
+    <Property Name="Urun_Resim" Type="nvarchar(max)" />
+    <Property Name="Urun_Adi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Urun_Ayrinti" Type="nvarchar(max)" />
+    <Property Name="Urun_Kategori" Type="smallint" />
+    <Property Name="Urun_Ucret" Type="money" />
+    <Property Name="Urun_Stok" Type="int" />
+  </EntityType>
+  <Association Name="FK_Siparisler_TBL_Urunler_TBL1">
+    <End Role="Urunler_TBL" Type="Self.Urunler_TBL" Multiplicity="0..1" />
+    <End Role="Siparisler_TBL" Type="Self.Siparisler_TBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler_TBL">
+        <PropertyRef Name="Urun_ID" />
+      </Principal>
+      <Dependent Role="Siparisler_TBL">
+        <PropertyRef Name="Siparis_Urun" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_TBL_Kategoriler_TBL">
+    <End Role="Kategoriler_TBL" Type="Self.Kategoriler_TBL" Multiplicity="0..1" />
+    <End Role="Urunler_TBL" Type="Self.Urunler_TBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler_TBL">
+        <PropertyRef Name="Kategori_ID" />
+      </Principal>
+      <Dependent Role="Urunler_TBL">
+        <PropertyRef Name="Urun_Kategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Kategoriler_TBL" EntityType="Self.Kategoriler_TBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login_TBL" EntityType="Self.Login_TBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Masalar_TBL" EntityType="Self.Masalar_TBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personel_TBL" EntityType="Self.Personel_TBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Siparisler_TBL" EntityType="Self.Siparisler_TBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urunler_TBL" EntityType="Self.Urunler_TBL" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Siparisler_TBL_Urunler_TBL1" Association="Self.FK_Siparisler_TBL_Urunler_TBL1">
+      <End Role="Urunler_TBL" EntitySet="Urunler_TBL" />
+      <End Role="Siparisler_TBL" EntitySet="Siparisler_TBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_TBL_Kategoriler_TBL" Association="Self.FK_Urunler_TBL_Kategoriler_TBL">
+      <End Role="Kategoriler_TBL" EntitySet="Kategoriler_TBL" />
+      <End Role="Urunler_TBL" EntitySet="Urunler_TBL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

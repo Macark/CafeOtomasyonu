@@ -1,0 +1,75 @@
+﻿@model  Cafe_Otomasyonu.Models.Entity.Urunler_TBL
+@{
+    ViewBag.Title = "YeniÜrün";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        @using (Html.BeginForm("YeniÜrün", "Urunler", FormMethod.Post, new { enctype = "multipart/Form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Urun_Resim, "Resim", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Urun_Resim, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        <input type="file" name="File" />
+                        @Html.ValidationMessageFor(model => model.Urun_Resim, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Urun_Adi, "Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Urun_Adi, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Urun_Adi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Urun_Ayrinti, "Açıklama", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Urun_Ayrinti, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Urun_Ayrinti, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Urun_Kategori, "Kategori Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Kategori_ID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Urun_Kategori, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Urun_Ucret, "Fiyat", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Urun_Ucret, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Urun_Ucret, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Urun_Stok, "Stok", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Urun_Stok, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Urun_Stok, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ekle" class="btn btn-primary" />
+                        @Html.ActionLink("Urunler", "Index", null, new { @class = "btn btn-warning" })
+                    </div>
+                </div>
+            </div>
+
+        }
+    </section>
+</section>

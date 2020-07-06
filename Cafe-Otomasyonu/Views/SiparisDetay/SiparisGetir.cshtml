@@ -1,0 +1,51 @@
+﻿@model Cafe_Otomasyonu.Models.Entity.Siparisler_TBL
+@{
+    ViewBag.Title = "SiparisGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+
+        @using (Html.BeginForm("Guncelle", "SiparisDetay", FormMethod.Post))
+        {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Siparis_ID)
+            @Html.TextBoxFor(m => m.Siparis_ID, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(m => m.Siparis_Urun)
+            @Html.TextBoxFor(m => m.Siparis_Urun, new { @class = "form-control" })
+            <br />
+
+            @Html.LabelFor(m => m.Siparis_Adet)
+            @Html.TextBoxFor(m => m.Siparis_Adet, new { @class = "form-control" })
+            <br />
+
+            @Html.LabelFor(m => m.Siparis_Zaman)
+            @Html.TextBoxFor(m => m.Siparis_Zaman, new { @class = "form-control" })
+            <br />
+
+            @Html.LabelFor(m => m.Siparis_Masa)
+            @Html.TextBoxFor(m => m.Siparis_Masa, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(m => m.Siparis_Durum)
+            @Html.TextBoxFor(m => m.Siparis_Durum, new { @class = "form-control" })
+            <br />
+            @Html.LabelFor(m => m.Siparis_Fiyat)
+            @Html.TextBoxFor(m => m.Siparis_Fiyat, new { @class = "form-control" })
+            <br />
+
+        </div>
+            <button class="btn btn-warning">Ürün Güncelle</button>
+
+            <div>
+
+            </div>
+
+        }
+
+
+
+
+    </section>
+</section>

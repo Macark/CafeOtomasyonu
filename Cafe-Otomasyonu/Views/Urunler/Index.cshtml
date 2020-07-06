@@ -1,0 +1,51 @@
+﻿@using Cafe_Otomasyonu.Models.Entity;
+@model List<Urunler_TBL>
+@{
+    ViewBag.Title = "Ürünler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section id="main-content">
+    <section class="wrapper">
+        <div> <td><a href="/Urunler/YeniÜrün/" class="btn btn-primary">YENİ ÜRÜN EKLE</a></td></div>
+           
+        
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                   <th>Ürün ID</th>
+                    <th>Ürün Resim</th>
+                    <th>Ürün Adı</th>
+                    <th>Ayrıntı</th>
+                    <th>Kategori</th>
+                    <th>Ürün Fiyatı</th>
+                    <th>Ürün Stok</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                { 
+                <tr>
+                    <td>@item.Urun_ID</td>
+                    <td>
+                        <img src="~/Content/images/@item.Urun_Resim" width="75" height="50" />
+                    </td>
+
+                    <td>@item.Urun_Adi</td>
+                    <td>@item.Urun_Ayrinti</td>
+                    <td>@item.Urun_Kategori</td>
+                    <td>@item.Urun_Ucret<a>₺</a></td>
+                    <td>@item.Urun_Stok</td>
+                    <td>@Html.ActionLink("Sil", "sil", new { id = item.Urun_ID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
+                    <td><a href="/Urunler/UrunGetir/@item.Urun_ID" class="btn btn-success">GÜNCELLE</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</section>

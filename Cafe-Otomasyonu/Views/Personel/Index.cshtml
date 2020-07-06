@@ -1,0 +1,46 @@
+﻿@using Cafe_Otomasyonu.Models.Entity;
+@model List<Personel_TBL>
+@{
+    ViewBag.Title = "Personeller";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <table class="table table-bordered">
+            <tr>
+                    
+                <th>Personel ID</th>
+                <th>Personel Adı</th>
+                <th>Personel Soyadı</th>
+                <th>Personel Telefon</th>
+                <th>Bölümü</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+               
+            </tr>
+            <tbody>
+                @foreach (var per in Model)
+                {
+                <tr>
+                    <td>@per.Per_ID</td>
+                    <td>@per.Per_Ad</td>
+                    <td>@per.Per_Soyad</td>
+                    <td>@per.Per_Telefon</td>
+                    <td>@per.Per_Bölüm</td>
+
+
+                    <td><a href="/Personel/Sil/@per.Per_ID" class="btn btn-danger">SİL</a></td>
+                    <td><a href="/Personel/Güncelle/@per.Per_ID" class="btn btn-success">GÜNCELLE</a></td>
+
+                </tr>
+                }
+                </tbody>
+
+
+        </table>
+        <td><a href="/Personel/YeniPersonel/" class="btn btn-primary">PERSONEL EKLE</a></td>
+
+    </section>
+</section>
+

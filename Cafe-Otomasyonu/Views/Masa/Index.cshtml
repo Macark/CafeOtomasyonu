@@ -1,0 +1,229 @@
+﻿ @using Cafe_Otomasyonu.Models.Entity;
+@model List<Masalar_TBL>
+@{
+    ViewBag.Title = "Masalar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <html>
+        <head>
+            <style type="text/css">
+                .kutu1{
+                    width: 120px;
+                    height: 120px;
+                    pointer-events: auto;
+                    background-color: white;
+                    color: black;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                }
+                    .kutu1:hover {
+                        width: 120px;
+                        height: 120px;
+                        pointer-events: auto;
+                        background-color: green;
+                        color: black;
+                        border: 2px solid #000;
+                        font: bold 18px italic;
+                        text-align: center;
+                        padding: 30px 0 0 0;
+                        float: left;
+                    }
+
+                .kutu2 {
+                    width: 120px;
+                    height: 120px;
+                    background-color: white;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+                .kutu2:hover {
+                    width: 120px;
+                    height: 120px;
+                    background-color: green;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+
+                .kutu3 {
+                    width: 120px;
+                    height: 120px;
+                    background-color: white;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+                .kutu3:hover {
+                    width: 120px;
+                    height: 120px;
+                    background-color:green;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+
+                .kutu4 {
+                    width: 120px;
+                    height: 120px;
+                    background-color: white;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+                .kutu4:hover {
+                    width: 120px;
+                    height: 120px;
+                    background-color: green;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+
+                .kutu5 {
+                    width: 120px;
+                    height: 120px;
+                    background-color: white;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+                .kutu5:hover {
+                    width: 120px;
+                    height: 120px;
+                    background-color: green;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+
+                .kutu6 {
+                    width: 120px;
+                    height: 120px;
+                    background-color: white;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+                .kutu6:hover {
+                    width: 120px;
+                    height: 120px;
+                    background-color: green;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+
+                .kutu7 {
+                    width: 120px;
+                    height: 120px;
+                    background-color: white;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+                .kutu7:hover {
+                    width: 120px;
+                    height: 120px;
+                    background-color: green;
+                    color: white;
+                    border: 2px solid #000;
+                    font: bold 18px italic;
+                    text-align: center;
+                    padding: 30px 0 0 0;
+                    float: left;
+                    margin: 0 0 0 40px;
+                }
+                
+                
+            </style>
+        </head>
+        <body>
+            <div class="kutu1">
+                <a href="/Siparişler/Index/">MASA 1</a>
+            </div>
+
+            <div class="kutu2">
+                <a href="/Siparişler/Index/">MASA 2</a>
+            </div>
+
+            <div class="kutu3">
+                <a href="/Siparişler/Index/">MASA 3</a>
+            </div>
+
+            <div class="kutu4">
+                <a href="/Siparişler/Index/">MASA 4</a>
+            </div>
+
+            <div class="kutu5">
+                <a href="/Siparişler/Index/">MASA 5</a>
+            </div>
+
+            <div class="kutu6">
+                <a href="/Siparişler/Index/">MASA 6</a>
+            </div>
+
+            <div class="kutu7">
+                <a href="/Siparişler/Index/">MASA 7</a>
+            </div>
+           
+
+
+
+
+
+
+        </body>
+    </html>
+</section>
+</section>

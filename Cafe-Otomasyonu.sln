@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe-Otomasyonu", "Cafe-Otomasyonu\Cafe-Otomasyonu.csproj", "{E168BE48-37A3-4AE8-801C-5C96AD1B4ECD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E168BE48-37A3-4AE8-801C-5C96AD1B4ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E168BE48-37A3-4AE8-801C-5C96AD1B4ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E168BE48-37A3-4AE8-801C-5C96AD1B4ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E168BE48-37A3-4AE8-801C-5C96AD1B4ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F71B89B-3B1A-41BB-8CF9-6006C32EE664}
+	EndGlobalSection
+EndGlobal

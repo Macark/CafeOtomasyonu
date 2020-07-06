@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kategoriler_TBL">
+          <Key>
+            <PropertyRef Name="Kategori_ID" />
+          </Key>
+          <Property Name="Kategori_ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategori_Ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Login_TBL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Masalar_TBL">
+          <Key>
+            <PropertyRef Name="Masa_id" />
+          </Key>
+          <Property Name="Masa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Masa_Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Personel_TBL">
+          <Key>
+            <PropertyRef Name="Per_ID" />
+          </Key>
+          <Property Name="Per_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Per_Ad" Type="varchar" MaxLength="50" />
+          <Property Name="Per_Soyad" Type="varchar" MaxLength="50" />
+          <Property Name="Per_Telefon" Type="varchar" MaxLength="12" />
+          <Property Name="Per_Bölüm" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Siparisler_TBL">
+          <Key>
+            <PropertyRef Name="Siparis_ID" />
+          </Key>
+          <Property Name="Siparis_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Siparis_Urun" Type="int" />
+          <Property Name="Siparis_isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Siparis_Adet" Type="nvarchar" MaxLength="50" />
+          <Property Name="Siparis_Zaman" Type="datetime" />
+          <Property Name="Siparis_Masa" Type="int" />
+          <Property Name="Siparis_Durum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Siparis_Fiyat" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Urunler_TBL">
+          <Key>
+            <PropertyRef Name="Urun_ID" />
+          </Key>
+          <Property Name="Urun_ID" Type="int" Nullable="false" />
+          <Property Name="Urun_Resim" Type="nvarchar(max)" />
+          <Property Name="Urun_Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Urun_Ayrinti" Type="nvarchar(max)" />
+          <Property Name="Urun_Kategori" Type="smallint" />
+          <Property Name="Urun_Ucret" Type="money" />
+          <Property Name="Urun_Stok" Type="int" />
+        </EntityType>
+        <Association Name="FK_Siparisler_TBL_Urunler_TBL1">
+          <End Role="Urunler_TBL" Type="Self.Urunler_TBL" Multiplicity="0..1" />
+          <End Role="Siparisler_TBL" Type="Self.Siparisler_TBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler_TBL">
+              <PropertyRef Name="Urun_ID" />
+            </Principal>
+            <Dependent Role="Siparisler_TBL">
+              <PropertyRef Name="Siparis_Urun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urunler_TBL_Kategoriler_TBL">
+          <End Role="Kategoriler_TBL" Type="Self.Kategoriler_TBL" Multiplicity="0..1" />
+          <End Role="Urunler_TBL" Type="Self.Urunler_TBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler_TBL">
+              <PropertyRef Name="Kategori_ID" />
+            </Principal>
+            <Dependent Role="Urunler_TBL">
+              <PropertyRef Name="Urun_Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Kategoriler_TBL" EntityType="Self.Kategoriler_TBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login_TBL" EntityType="Self.Login_TBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Masalar_TBL" EntityType="Self.Masalar_TBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel_TBL" EntityType="Self.Personel_TBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siparisler_TBL" EntityType="Self.Siparisler_TBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urunler_TBL" EntityType="Self.Urunler_TBL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Siparisler_TBL_Urunler_TBL1" Association="Self.FK_Siparisler_TBL_Urunler_TBL1">
+            <End Role="Urunler_TBL" EntitySet="Urunler_TBL" />
+            <End Role="Siparisler_TBL" EntitySet="Siparisler_TBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urunler_TBL_Kategoriler_TBL" Association="Self.FK_Urunler_TBL_Kategoriler_TBL">
+            <End Role="Kategoriler_TBL" EntitySet="Kategoriler_TBL" />
+            <End Role="Urunler_TBL" EntitySet="Urunler_TBL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Kategoriler_TBL">
+          <Key>
+            <PropertyRef Name="Kategori_ID" />
+          </Key>
+          <Property Name="Kategori_ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategori_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Urunler_TBL" Relationship="Self.FK_Urunler_TBL_Kategoriler_TBL" FromRole="Kategoriler_TBL" ToRole="Urunler_TBL" />
+        </EntityType>
+        <EntityType Name="Login_TBL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Masalar_TBL">
+          <Key>
+            <PropertyRef Name="Masa_id" />
+          </Key>
+          <Property Name="Masa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Masa_Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Personel_TBL">
+          <Key>
+            <PropertyRef Name="Per_ID" />
+          </Key>
+          <Property Name="Per_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Per_Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Per_Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Per_Telefon" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Per_Bölüm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Siparisler_TBL">
+          <Key>
+            <PropertyRef Name="Siparis_ID" />
+          </Key>
+          <Property Name="Siparis_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Siparis_Urun" Type="Int32" />
+          <Property Name="Siparis_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Siparis_Adet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Siparis_Zaman" Type="DateTime" Precision="3" />
+          <Property Name="Siparis_Masa" Type="Int32" />
+          <Property Name="Siparis_Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Siparis_Fiyat" Type="Int32" />
+          <NavigationProperty Name="Urunler_TBL" Relationship="Self.FK_Siparisler_TBL_Urunler_TBL1" FromRole="Siparisler_TBL" ToRole="Urunler_TBL" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Urunler_TBL">
+          <Key>
+            <PropertyRef Name="Urun_ID" />
+          </Key>
+          <Property Name="Urun_ID" Type="Int32" Nullable="false" />
+          <Property Name="Urun_Resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Urun_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Urun_Ayrinti" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Urun_Kategori" Type="Int16" />
+          <Property Name="Urun_Ucret" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Urun_Stok" Type="Int32" />
+          <NavigationProperty Name="Kategoriler_TBL" Relationship="Self.FK_Urunler_TBL_Kategoriler_TBL" FromRole="Urunler_TBL" ToRole="Kategoriler_TBL" />
+          <NavigationProperty Name="Siparisler_TBL" Relationship="Self.FK_Siparisler_TBL_Urunler_TBL1" FromRole="Urunler_TBL" ToRole="Siparisler_TBL" />
+        </EntityType>
+        <Association Name="FK_Urunler_TBL_Kategoriler_TBL">
+          <End Role="Kategoriler_TBL" Type="Self.Kategoriler_TBL" Multiplicity="0..1" />
+          <End Role="Urunler_TBL" Type="Self.Urunler_TBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler_TBL">
+              <PropertyRef Name="Kategori_ID" />
+            </Principal>
+            <Dependent Role="Urunler_TBL">
+              <PropertyRef Name="Urun_Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparisler_TBL_Urunler_TBL1">
+          <End Role="Urunler_TBL" Type="Self.Urunler_TBL" Multiplicity="0..1" />
+          <End Role="Siparisler_TBL" Type="Self.Siparisler_TBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler_TBL">
+              <PropertyRef Name="Urun_ID" />
+            </Principal>
+            <Dependent Role="Siparisler_TBL">
+              <PropertyRef Name="Siparis_Urun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Cafe_OtomasyonuEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kategoriler_TBL" EntityType="Self.Kategoriler_TBL" />
+          <EntitySet Name="Login_TBL" EntityType="Self.Login_TBL" />
+          <EntitySet Name="Masalar_TBL" EntityType="Self.Masalar_TBL" />
+          <EntitySet Name="Personel_TBL" EntityType="Self.Personel_TBL" />
+          <EntitySet Name="Siparisler_TBL" EntityType="Self.Siparisler_TBL" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Urunler_TBL" EntityType="Self.Urunler_TBL" />
+          <AssociationSet Name="FK_Urunler_TBL_Kategoriler_TBL" Association="Self.FK_Urunler_TBL_Kategoriler_TBL">
+            <End Role="Kategoriler_TBL" EntitySet="Kategoriler_TBL" />
+            <End Role="Urunler_TBL" EntitySet="Urunler_TBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparisler_TBL_Urunler_TBL1" Association="Self.FK_Siparisler_TBL_Urunler_TBL1">
+            <End Role="Urunler_TBL" EntitySet="Urunler_TBL" />
+            <End Role="Siparisler_TBL" EntitySet="Siparisler_TBL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Cafe_OtomasyonuEntities2">
+          <EntitySetMapping Name="Kategoriler_TBL">
+            <EntityTypeMapping TypeName="Model.Kategoriler_TBL">
+              <MappingFragment StoreEntitySet="Kategoriler_TBL">
+                <ScalarProperty Name="Kategori_ID" ColumnName="Kategori_ID" />
+                <ScalarProperty Name="Kategori_Ad" ColumnName="Kategori_Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login_TBL">
+            <EntityTypeMapping TypeName="Model.Login_TBL">
+              <MappingFragment StoreEntitySet="Login_TBL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masalar_TBL">
+            <EntityTypeMapping TypeName="Model.Masalar_TBL">
+              <MappingFragment StoreEntitySet="Masalar_TBL">
+                <ScalarProperty Name="Masa_id" ColumnName="Masa_id" />
+                <ScalarProperty Name="Masa_Durum" ColumnName="Masa_Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel_TBL">
+            <EntityTypeMapping TypeName="Model.Personel_TBL">
+              <MappingFragment StoreEntitySet="Personel_TBL">
+                <ScalarProperty Name="Per_ID" ColumnName="Per_ID" />
+                <ScalarProperty Name="Per_Ad" ColumnName="Per_Ad" />
+                <ScalarProperty Name="Per_Soyad" ColumnName="Per_Soyad" />
+                <ScalarProperty Name="Per_Telefon" ColumnName="Per_Telefon" />
+                <ScalarProperty Name="Per_Bölüm" ColumnName="Per_Bölüm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siparisler_TBL">
+            <EntityTypeMapping TypeName="Model.Siparisler_TBL">
+              <MappingFragment StoreEntitySet="Siparisler_TBL">
+                <ScalarProperty Name="Siparis_ID" ColumnName="Siparis_ID" />
+                <ScalarProperty Name="Siparis_Urun" ColumnName="Siparis_Urun" />
+                <ScalarProperty Name="Siparis_isim" ColumnName="Siparis_isim" />
+                <ScalarProperty Name="Siparis_Adet" ColumnName="Siparis_Adet" />
+                <ScalarProperty Name="Siparis_Zaman" ColumnName="Siparis_Zaman" />
+                <ScalarProperty Name="Siparis_Masa" ColumnName="Siparis_Masa" />
+                <ScalarProperty Name="Siparis_Durum" ColumnName="Siparis_Durum" />
+                <ScalarProperty Name="Siparis_Fiyat" ColumnName="Siparis_Fiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urunler_TBL">
+            <EntityTypeMapping TypeName="Model.Urunler_TBL">
+              <MappingFragment StoreEntitySet="Urunler_TBL">
+                <ScalarProperty Name="Urun_ID" ColumnName="Urun_ID" />
+                <ScalarProperty Name="Urun_Resim" ColumnName="Urun_Resim" />
+                <ScalarProperty Name="Urun_Adi" ColumnName="Urun_Adi" />
+                <ScalarProperty Name="Urun_Ayrinti" ColumnName="Urun_Ayrinti" />
+                <ScalarProperty Name="Urun_Kategori" ColumnName="Urun_Kategori" />
+                <ScalarProperty Name="Urun_Ucret" ColumnName="Urun_Ucret" />
+                <ScalarProperty Name="Urun_Stok" ColumnName="Urun_Stok" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "YeniPersonel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section id="main-content">
+    <section class="wrapper">
+        <form class="form-group" method="post">
+
+            <div>
+                <label>Personel Adı</label>
+                <input type="text" class="form-control" name="Per_Ad" />
+            </div>
+
+            <div>
+                <label>Personel Soyadı</label>
+                <input type="text" class="form-control" name="Per_Soyad" />
+            </div>
+
+            <div>
+                <label>Personel Telefonu</label>
+                <input type="tel" class="form-control" name="Per_Telefon" />
+            </div>
+
+            <div>
+                <label>Bölümü</label>
+                <input type="text" class="form-control" name="Per_Bölüm" />
+
+            </div>
+
+            <div style="margin-top:15px">
+                <button class="btn btn-info">Personel Ekle</button>
+            </div>
+
+        </form>
+
+    </section>
+</section>

@@ -1,0 +1,53 @@
+﻿@using Cafe_Otomasyonu.Models.Entity;
+@model List<Siparisler_TBL>
+
+@{
+
+
+    ViewBag.Title = "Sipariş Detay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <table class="table table-bordered">
+            <tr>
+
+                <th>Sipariş ID</th>
+                <th>Ürün</th>
+                <th>Sİpariş Adet</th>
+                <th>Sipariş Zamanı</th>
+                <th>Masa</th>
+                <th>Sipariş Durumu</th>
+                <th>Fiyat</th>
+                <th>Sipariş Sil</th>
+                <th>Sipariş Güncelle</th>
+
+
+            </tr>
+            <tbody>
+                @foreach (var siparis in Model)
+                {
+                    <tr>
+                        <td>@siparis.Siparis_ID</td>
+                        <td>@siparis.Siparis_Urun</td>
+                        <td>@siparis.Siparis_Adet</td>
+                        <td>@siparis.Siparis_Zaman</td>
+                        <td>@siparis.Siparis_Masa</td>
+                        <td>@siparis.Siparis_Durum</td>
+                        <td>@siparis.Siparis_Fiyat<a>₺</a></td>
+
+
+                        <td>@Html.ActionLink("Sil", "sil", new { id = siparis.Siparis_ID}, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
+                            <td><a href="/SiparisDetay/SiparisGetir/@siparis.Siparis_ID" class="btn btn-success">GÜNCELLE</a></td>
+
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+
+
+    </section>
+</section>
